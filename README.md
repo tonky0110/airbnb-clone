@@ -25,3 +25,14 @@ linter, formatter설치
 linter: pipenv install flake8 --dev
 formatter: pipenv install black --dev --pre
 
+파이썬 서버 실행
+    pipenv shell
+    pythone manage.py runserver
+
+DB table magrate
+    python manage.py migrate
+
+관리자 계정 생성
+    python manage.py createsuperuser
+    계정명, email, 비밀번호 입력 후 생성.
+    
