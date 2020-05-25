@@ -43,4 +43,13 @@ ex) user - 로그인, 로그아웃, 계정생성, 상세보기 && 메시지 보�
 application 생명 명령어(단, appName은 반드시 복수로 표현)
     django-admin startapp appName
 
+model변경 후 명령어
+1) 변경된 모델을 django에서 인식하기 위하여 makemigrations명령을 실행.
+    python manage.py makemigrations
+
+2) 적용된 migrate를 db에 적용하기 위한 migrate명령어 실행.
+    python manage.py migrate
+
+ ☀︎ 사용자 테이블을 삭제한경우 createsuperuser명령어로 admin계정을 생성해 줘야됨.
+ 
 
