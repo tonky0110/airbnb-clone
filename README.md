@@ -35,4 +35,12 @@ DB table magrate
 관리자 계정 생성
     python manage.py createsuperuser
     계정명, email, 비밀번호 입력 후 생성.
-    
+
+1개의 프로젝트에는 1개이상의 application이 존재한다.
+1개의 application은 1개의 문장으로 표현가능하다.(and가 들어간다면, 2개의 application으로 쪼개는걸 고민)
+ex) user - 로그인, 로그아웃, 계정생성, 상세보기 && 메시지 보내기 <-- 분리.
+
+application 생명 명령어(단, appName은 반드시 복수로 표현)
+    django-admin startapp appName
+
+
