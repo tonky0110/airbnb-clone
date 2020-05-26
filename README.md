@@ -51,5 +51,11 @@ model변경 후 명령어
     python manage.py migrate
 
  ☀︎ 사용자 테이블을 삭제한경우 createsuperuser명령어로 admin계정을 생성해 줘야됨.
- 
 
+사용자 테이블 확장
+user.model.py
+
+새로운 컬럼 추가
+null=True/False: DB에 값을 설정.
+blank=True/False: admin페이지에서 필수값 여부 설정.
+choices: 원하는 값만 선택할 수 있도록 설정.
