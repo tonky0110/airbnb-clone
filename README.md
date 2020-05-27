@@ -59,3 +59,15 @@ user.model.py
 null=True/False: DB에 값을 설정.
 blank=True/False: admin페이지에서 필수값 여부 설정.
 choices: 원하는 값만 선택할 수 있도록 설정.
+
+
+models(Table mapper) 추가 --> 관리자 페이지에서 관리한 model맵핑
+models-admin 맵핑 방법
+1) 데코레이터
+    ex)
+    @admin.register(models.모델명)
+
+2) 직접등록
+    ex)
+    dmin.site.register(models.모델명, 실제맵핑할모델명)
+
