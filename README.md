@@ -71,3 +71,8 @@ models-admin 맵핑 방법
     ex)
     dmin.site.register(models.모델명, 실제맵핑할모델명)
 
+공통 application생성
+이유: 공통 기능, 모델을 확장하여 다른 어플리케이션에서 사용할 수 있도록 하기 위하여 공통 application생성.
+1) core Application생성.
+django-admin startapp core
+
