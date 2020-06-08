@@ -110,3 +110,13 @@ Admin Page Object명 변경
             verbose_name_plural = ""
 
 
+Reviews App
+-> 이용자는 Room을 사용하고 Review를 남길 수 있다.
+    평점, 후기, 등등.
+
+def __str__(self):
+    return "설정하고자 하는 이름"
+
+relationship으로 조회 하기.
+    return f"{self.room}" 등과 같이 이름을 설정할 수 있다.
+    
