@@ -76,3 +76,23 @@ models-admin 맵핑 방법
 1) core Application생성.
 django-admin startapp core
 
+
+Room객체의 관계 설정하기
+1. Room - User 관계
+    1) 1명의 유저는 1개 이상의 방을 등록할 수 있다.(1:n관계)
+    2) 사용자가 삭제(탈퇴) 시 사용자가 등록한 모든 방은 삭제된다.(cascade)
+
+2. Room - Room Type관계
+    1) Room은 0~1개의 방 타입을 설정할 수 있다.
+    2) Room Type삭제 시 해당하는 관계는 null로 설정된다.
+
+3. Room - Amenity관계
+    1) 1개의 방에는 0개 이상의 Amenity(객실 비품)이 있을 수 있다.(n:m관계)
+
+4. Room - Facility관계
+    1) 1개의 방에는 0개 이상의 Facility(시설)가 있다.(n:m관계)
+
+5. Room - House Rule관계
+    1) 1개의 방에는 0개 이상의 House Rule이 있을 수 있다.(n:m관계)
+
+
