@@ -95,4 +95,18 @@ Room객체의 관계 설정하기
 5. Room - House Rule관계
     1) 1개의 방에는 0개 이상의 House Rule이 있을 수 있다.(n:m관계)
 
+6. Room - Photo 관계
+    1) 1개의 방에는 0개 이상의 사진을 등록할 수 있다.
+    2) Photo(사진)는 caption, file을 가지고, Room과 n:1관계를 가진다.
+    👆 Admin 페이지 등록 시 RoomItem과는 다른 속성이기 때문에 따로 등록하도록 한다.
+
+
+Admin Page Object명 변경
+    1) 규칙 명사
+        class Meta:
+            verbose_name = ""
+    2) 불규칙 명사
+        class Meta:
+            verbose_name_plural = ""
+
 
