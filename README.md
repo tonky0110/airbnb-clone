@@ -120,3 +120,28 @@ def __str__(self):
 relationship으로 조회 하기.
     return f"{self.room}" 등과 같이 이름을 설정할 수 있다.
     
+
+search_fields = ("=city", "^host__username")
+=city:
+^host_username:
+
+
+console에서 장고와 communication하기
+1) 버블 실행하기: pipenv shell
+-- 2) 파이썬 실행하기: python
+3) 장고 실행하기: python manage.py shell
+
+4) 모델 임포트하기: from users.models import User
+
+User : 타입을 print
+dir(User): 컬럼정보를 출력
+vars(User): 내용을 출력
+
+콘솔 클리어: ctrl + L
+
+manager -> User.objects
+전체 조회: User.objects.all()
+
+변수 선언: all_user = User.objects.all()
+필터링: all_user.filter(superhost=True)
+찾기: tonky0110=User.objects.get(username="tonky0110")
