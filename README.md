@@ -145,3 +145,13 @@ manager -> User.objects
 변수 선언: all_user = User.objects.all()
 필터링: all_user.filter(superhost=True)
 찾기: tonky0110=User.objects.get(username="tonky0110")
+
+FK관계 이름변경하기
+default: rooms_set
+변경: related_name="관계명"
+
+이퀄조회: User.objects.get(username="검색어")
+
+Filter(필터)
+시작문자열비교: startswith
+User.objects.filter(username__startswith="to")
