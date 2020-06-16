@@ -155,3 +155,7 @@ default: rooms_set
 Filter(필터)
 시작문자열비교: startswith
 User.objects.filter(username__startswith="to")
+
+
+model 확장
+평균과 같은 값들을 admin화면 뿐만아니라 사용자 페이지에서도 사용하기 위하여 model에서 함수를 선언 및 구현한다.
