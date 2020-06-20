@@ -162,3 +162,23 @@ model 확장
 
 
 __init__.py: 해당 폴더가 python, django폴더라는 것을 알려주는 파일
+
+
+데이터 일괄 밀어 넣기.
+django를 통해서 orm방식으로 일괄 밀어넣기 한다.
+1) 명령어
+python manage.py 파일명 --옵션
+
+경로 및 init파일 생성
+ex) 
+rooms아래 managements폴더 생성 및 __init__.py파일 생성
+commands폴더 생성 및 __init__.py파일 생성
+commands폴더 아래 일괄 밀어넣기 용 명령어 파일 생성
+seed_amenities.py 파일 생성 후
+
+class Command 생성
+def handle(self, *args, **options) 생성
+
+orm방식으로
+models.objects.클래스.create(name="") 실행
+종료
