@@ -182,3 +182,10 @@ def handle(self, *args, **options) 생성
 orm방식으로
 models.objects.클래스.create(name="") 실행
 종료
+
+
+model(DB Table)생성 및 admin페이지 완료.
+--------------------------------------------------------------------------------------------------------------
+
+실행 라이프 사이클
+urls --> pattern매칭 --> views(function) --> 조건검사 및 data생성 --> render(template)호출 --> html을 클라이언트로 전송.
