@@ -1,7 +1,9 @@
 # from django.utils import timezone
 from django.views.generic import ListView
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.http import Http404
+from django.shortcuts import render  # , redirect
+
+# from django.urls import reverse
 from . import models
 
 
@@ -30,4 +32,5 @@ def room_detail(request, pk):
         print(room)
         return render(request, "rooms/detail.html", {"room": room})
     except models.Room.DoesNotExist:
-        return redirect(reverse("core:home"))
+        # return redirect(reverse("core:home"))
+        raise Http404()
