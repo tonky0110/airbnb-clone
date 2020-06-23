@@ -1,12 +1,14 @@
 # from django.utils import timezone
-from django.views.generic import ListView
-from django.http import Http404
-from django.shortcuts import render  # , redirect
+from django.views.generic import ListView, DetailView
+
+# from django.http import Http404
+# from django.shortcuts import render  # , redirect
 
 # from django.urls import reverse
 from . import models
 
 
+# https://ccbv.co.uk/projects/Django/3.0/django.views.generic.list/ListView/
 class HomeView(ListView):
 
     """ HomeView Definition """
@@ -18,19 +20,28 @@ class HomeView(ListView):
     context_object_name = "rooms"
 
     # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
+    #     context = super().get_ context_data(**kwargs)
     #     # context = {}
     #     now = timezone.now()
     #     context["now"] = now
     #     return context
 
 
-def room_detail(request, pk):
-    try:
+# def room_detail(request, pk):
+#     try:
 
-        room = models.Room.objects.get(pk=pk)
-        print(room)
-        return render(request, "rooms/detail.html", {"room": room})
-    except models.Room.DoesNotExist:
-        # return redirect(reverse("core:home"))
-        raise Http404()
+#         room = models.Room.objects.get(pk=pk)
+#         print(room)
+#         return render(request, "rooms/detail.html", {"room": room})
+#     except models.Room.DoesNotExist:
+#         # return redirect(reverse("core:home"))
+#         raise Http404()
+
+
+# https://ccbv.co.uk/projects/Django/3.0/django.views.generic.detail/DetailView/
+class RoomDetail(DetailView):
+
+    """ Room Detail Definition """
+
+    model = models.Room
+
