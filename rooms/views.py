@@ -2,7 +2,7 @@
 from django.views.generic import ListView, DetailView
 
 # from django.http import Http404
-# from django.shortcuts import render  # , redirect
+from django.shortcuts import render  # , redirect
 
 # from django.urls import reverse
 from . import models
@@ -45,3 +45,10 @@ class RoomDetail(DetailView):
 
     model = models.Room
 
+
+def search(request):
+    city = request.GET.get("city")
+    city = str.capitalize(city)
+    # print(request)
+    print(city)
+    return render(request, "rooms/search.html", {"city": city})
