@@ -1,10 +1,14 @@
 from django.views import View
 from django.shortcuts import render
+from . import forms
 
 # Create your views here.
 class LoginView(View):
     def get(self, request):
-        return render(request, "users/login.html")
+
+        form = forms.LoginForm(request.POST)
+        print(form)
+        return render(request, "users/login.html", {"form": form})
 
     def post(self, request):
         pass
