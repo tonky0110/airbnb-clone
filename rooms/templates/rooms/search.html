@@ -62,14 +62,43 @@
             <label for="baths">Baths</label>
             <input type="number" value="{{baths}}" id="baths" name="baths" placeholder="Baths" />
         </div>
-
+        <div>
+            <label for="instant">Instant Book Only?</label>
+            <input
+                type="checkbox"
+                id="instant"
+                name="instant"
+                {% if instant %}
+                    checked
+                {% endif %}
+            />
+        </div>
+        <div>
+            <label for="super_host">By super host only?</label>
+            <input
+                type="checkbox"
+                id="super_host"
+                name="super_host"
+                {% if super_host %}
+                    checked
+                {% endif %}
+            />
+        </div>
         <div>
             <h3>Amenities</h3>
             <ul>
                 {% for amenity in amenities %}
                     <li>
                         <label for="a_{{amenity.pk}}">{{amenity.name}}</label>
-                        <input type="checkbox" id="a_{{amenity.pk}}" name="amenities" value={{amenity.id}} />
+                        <input
+                            type="checkbox"
+                            id="a_{{amenity.pk}}"
+                            name="amenities"
+                            value={{amenity.id}} 
+                            {% if amenity.pk|slugify in s_amenities %}
+                                checked
+                            {% endif %}
+                        />
                     </li>
                 {% endfor %}
             </ul>
@@ -80,7 +109,15 @@
                 {% for facility in facilities %}
                     <li>
                         <label for="f_{{facility.pk}}">{{facility.name}}</label>
-                        <input type="checkbox" id="f_{{facility.pk}}" name="facilities" value={{facility.id}} />
+                        <input
+                            type="checkbox"
+                            id="f_{{facility.pk}}"
+                            name="facilities"
+                            value={{facility.id}}
+                            {% if facility.pk|slugify in s_facilities %}
+                                checked
+                            {% endif %}
+                        />
                     </li>
                 {% endfor %}
             </ul>
