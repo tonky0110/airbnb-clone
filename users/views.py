@@ -5,13 +5,13 @@ from . import forms
 # Create your views here.
 class LoginView(View):
     def get(self, request):
-
-        form = forms.LoginForm(request.POST)
-        print(form)
+        form = forms.LoginForm()
         return render(request, "users/login.html", {"form": form})
 
     def post(self, request):
-        pass
+        form = forms.LoginForm(request.POST)
+        print(form)
+        return render(request, "users/login.html", {"form": form})
 
 
 def login_view(request):
