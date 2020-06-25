@@ -64,7 +64,7 @@ def search(request):
     instant = request.GET.get("instant", False)
     super_host = request.GET.get("super_host", False)
 
-    print(s_amenities, s_facilities)
+    # print(s_amenities, s_facilities)
     form = {
         "city": city,
         "s_room_type": room_type,
@@ -90,5 +90,21 @@ def search(request):
         "amenities": amenities,
         "facilities": facilities,
     }
+
+    filter_args = {}
+
+    if city != "Anywhere":
+        filter_args["city__startswith"] = city
+
+    filter_args["country"] = country
+
+    if room_type != 0:
+        filter_args["room_type__pk"] = room_type
+
+    print(filter_args)
+
+    rooms = models.Room.objects.filter(**filter_args)
+    print(rooms)
+
     # print(form)
-    return render(request, "rooms/search.html", {**form, **choices},)
+    return render(request, "rooms/search.html", {**form, **choices, "rooms": rooms,})
