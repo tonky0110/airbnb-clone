@@ -4,6 +4,8 @@ from django.views.generic import ListView, DetailView
 # from django.http import Http404
 from django.shortcuts import render  # , redirect
 
+from django_countries import countries
+
 # from django.urls import reverse
 from . import models
 
@@ -47,8 +49,15 @@ class RoomDetail(DetailView):
 
 
 def search(request):
-    city = request.GET.get("city", "")
+    print(request.GET)
+    city = request.GET.get("city", "Anywhere")
     city = str.capitalize(city)
     # print(request)
-    print(city)
-    return render(request, "rooms/search.html", {"city": city})
+    # print(f"city: {city}")
+    # print(f"countries: {countries}")
+    room_types = models.RoomType.objects.all()
+    return render(
+        request,
+        "rooms/search.html",
+        {"city": city, "countries": countries, "room_types": room_types},
+    )
