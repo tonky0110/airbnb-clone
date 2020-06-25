@@ -44,7 +44,72 @@ class RoomDetail(DetailView):
 
 
 def search(request):
+    print(request.GET)
+    country = request.GET.get("country")
+    print(f"country: {country}")
+    if country:
+        form = forms.SearchForm(request.GET)
 
-    form = forms.SearchForm()
+        if form.is_valid():
+            city = form.cleaned_data.get("city")
+            country = form.cleaned_data.get("country")
+            room_type = form.cleaned_data.get("room")
+            price = form.cleaned_data.get("price")
+            guests = form.cleaned_data.get("guests")
+            bedrooms = form.cleaned_data.get("bedrooms")
+            beds = form.cleaned_data.get("beds")
+            baths = form.cleaned_data.get("baths")
+            instant_book = form.cleaned_data.get("instant")
+            superhost = form.cleaned_data.get("superhost")
+            amenities = form.cleaned_data.get("amenities")
+            facilities = form.cleaned_data.get("facilities")
 
-    return render(request, "rooms/search.html", {"form": form})
+            # print(f"form.city: {city}")
+            # print(f"form.country: {country}")
+            # print(f"form.room_type: {room_type}")
+            # print(f"form.price: {price}")
+            # print(f"form.guests: {guests}")
+            # print(f"form.bedrooms: {bedrooms}")
+            # print(f"form.beds: {beds}")
+            # print(f"form.baths: {baths}")
+            # print(f"form.instant_book: {instant_book}")
+            # print(f"form.superhost: {superhost}")
+            # print(f"form.amenities: {amenities}")
+            # print(f"form.facilities: {facilities}")
+
+            filter_args = {}
+
+            if city != "Anywhere":
+                filter_args["city"] = city
+            if country is not None:
+                filter_args["country"] = country
+            if room_type is not None:
+                filter_args["room_type"] = room_type
+            if price is not None:
+                filter_args["price"] = price
+            if guests is not None:
+                filter_args["guests"] = guests
+            if bedrooms is not None:
+                filter_args["bedrooms"] = bedrooms
+            if beds is not None:
+                filter_args["beds"] = beds
+            if baths is not None:
+                filter_args["baths"] = baths
+            if instant_book is True:
+                filter_args["instant_book"] = True
+            if superhost is True:
+                filter_args["host__superhost"] = True
+
+            for amenity in amenities:
+                filter_args["amenities"] = amenity
+
+            for facility in facilities:
+                filter_args["facilities"] = facility
+
+            print(f"filter_args: {filter_args}")
+            rooms = models.Room.objects.filter(**filter_args)
+    else:
+        form = forms.SearchForm()
+        rooms = []
+
+    return render(request, "rooms/search.html", {"form": form, "rooms": rooms})

@@ -6,7 +6,7 @@ from . import models
 class SearchForm(forms.Form):
 
     city = forms.CharField(
-        initial="Anywhere"
+        required=False, initial="Anywhere"
     )  # , widget=forms.Textarea: form의 타입을 변경해줌.
     country = CountryField(default="KR").formfield()
     room_type = forms.ModelChoiceField(
@@ -22,8 +22,12 @@ class SearchForm(forms.Form):
     superhost = forms.BooleanField(required=False)
 
     amenities = forms.ModelMultipleChoiceField(
-        queryset=models.Amenity.objects.all(), widget=forms.CheckboxSelectMultiple
+        required=False,
+        queryset=models.Amenity.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
     )
     facilities = forms.ModelMultipleChoiceField(
-        queryset=models.Facility.objects.all(), widget=forms.CheckboxSelectMultiple
+        required=False,
+        queryset=models.Facility.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
     )
