@@ -107,6 +107,7 @@ def search(request):
                 filter_args["facilities"] = facility
 
             print(f"filter_args: {filter_args}")
+
             rooms = models.Room.objects.filter(**filter_args)
     else:
         form = forms.SearchForm()
