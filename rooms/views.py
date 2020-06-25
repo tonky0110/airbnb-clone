@@ -46,12 +46,12 @@ class RoomDetail(DetailView):
 
 class SearchView(View):
     def get(self, request):
-        print(request.GET)
+        print(f"request.GET: {request.GET}")
         country = request.GET.get("country")
         print(f"country: {country}")
         if country:
             form = forms.SearchForm(request.GET)
-
+            # print(form)
             if form.is_valid():
                 city = form.cleaned_data.get("city")
                 country = form.cleaned_data.get("country")
@@ -66,7 +66,8 @@ class SearchView(View):
                 amenities = form.cleaned_data.get("amenities")
                 facilities = form.cleaned_data.get("facilities")
 
-                # print(f"form.city: {city}")
+                # print(f"form.city: {city}, not city: {not city}")
+                # print(city != "Anywhere", city != "", city == "")
                 # print(f"form.country: {country}")
                 # print(f"form.room_type: {room_type}")
                 # print(f"form.price: {price}")
@@ -111,11 +112,14 @@ class SearchView(View):
                 print(f"filter_args: {filter_args}")
 
                 qs = models.Room.objects.filter(**filter_args).order_by("-created")
+                # paginator = Paginator(qs, 10, orphans=5)
                 paginator = Paginator(qs, 1, orphans=0)
 
                 page = request.GET.get("page", 1)
+                print(f"page: {page}")
                 rooms = paginator.get_page(page)
-
+                print(f"rooms: {rooms}")
+                print(rooms)
                 return render(
                     request, "rooms/search.html", {"form": form, "rooms": rooms}
                 )

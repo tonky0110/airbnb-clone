@@ -21,7 +21,7 @@
         <h3>{{room.name}}</h3>
     {% endfor %}
 
-    {% comment %} <h5>
+    <h5>
         {% if rooms.has_previous %}
             <a href="?page={{rooms.number|add:-1}}">Previous</a>
         {% endif %}
@@ -31,6 +31,6 @@
         {% if rooms.has_next %}
             <a href="?page={{rooms.number|add:1}}">Next</a>
         {% endif %}
-    </h5> {% endcomment %}
+    </h5> 
 
 {% endblock content %}
