@@ -47,7 +47,7 @@ class RoomDetail(DetailView):
 
 
 def search(request):
-    city = request.GET.get("city")
+    city = request.GET.get("city", "")
     city = str.capitalize(city)
     # print(request)
     print(city)

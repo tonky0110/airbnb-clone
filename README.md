@@ -189,3 +189,8 @@ model(DB Table)생성 및 admin페이지 완료.
 
 실행 라이프 사이클
 urls --> pattern매칭 --> views(function) --> 조건검사 및 data생성 --> render(template)호출 --> html을 클라이언트로 전송.
+
+
+
+13.1 template/partials/header.html에는 값을 변경할 수 없기 때문에,
+search의 value를 변경하기 위하여 <form>태그의 위치를 변경해 준다.
